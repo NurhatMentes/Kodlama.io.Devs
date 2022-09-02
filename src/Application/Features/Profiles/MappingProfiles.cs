@@ -21,10 +21,10 @@ namespace Application.Features.Profiles
             CreateMap<ProgrammingLanguage, CreateProgrammingLanguagesCommand>().ReverseMap();
             CreateMap<ProgrammingLanguage, CreatedProgrammingLanguageDto>().ReverseMap();
             CreateMap<ProgrammingLanguage, DeleteProgrammingLanguagesCommand>().ReverseMap();
-            CreateMap<ProgrammingLanguage, UpdateProgrammingLanguagesCommand>().ReverseMap();
             CreateMap<ProgrammingLanguage, DeletedProgrammingLanguageDto>().ReverseMap();
+            CreateMap<ProgrammingLanguage, UpdateProgrammingLanguagesCommand>().ReverseMap();
+            CreateMap<ProgrammingLanguage, UpdatedProgrammingLanguageDto>().ReverseMap();   
             CreateMap<ProgrammingLanguage, ProgrammingLanguageGetByIdDto>().ReverseMap();
-            CreateMap<ProgrammingLanguage, UpdatedProgrammingLanguageDto>().ReverseMap();
             CreateMap<IPaginate<ProgrammingLanguage>, ProgrammingLanguageListModel>().ReverseMap();
             CreateMap<ProgrammingLanguage, ProgrammingLanguageListDto>().ReverseMap();
         }

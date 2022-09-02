@@ -7,6 +7,7 @@ using Application.Features.Queries.GetByIdProgrammingLanguage;
 using Application.Features.Queries.GetListProgrammingLanguage;
 using Core.Application.Requests;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebAPI.Controllers
 {
@@ -24,14 +25,14 @@ namespace WebAPI.Controllers
         [HttpDelete("{Id}")]
         public async Task<IActionResult> Delete([FromRoute] DeleteProgrammingLanguagesCommand deleteProgrammingLanguagesCommand)
         {
-            DeletedProgrammingLanguageDto? result = await Mediator.Send(deleteProgrammingLanguagesCommand);
+            DeletedProgrammingLanguageDto result = await Mediator.Send(deleteProgrammingLanguagesCommand);
             return Ok(result);
         }
 
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] UpdateProgrammingLanguagesCommand updateProgrammingLanguagesCommand)
         {
-            UpdatedProgrammingLanguageDto? updatedProgrammingLanguageDto = await Mediator.Send(updateProgrammingLanguagesCommand);
+            UpdatedProgrammingLanguageDto updatedProgrammingLanguageDto = await Mediator.Send(updateProgrammingLanguagesCommand);
             return Ok(updatedProgrammingLanguageDto);
         }
 
