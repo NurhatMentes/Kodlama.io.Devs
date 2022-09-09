@@ -10,5 +10,7 @@ namespace Application.Features.Constants
     {
         public static string ProgrammingLanguageNameCanNotBeDuplicatedWhenInserted = "Bu programlama dili mevcut.";
         public static string ProgrammingLanguageShouldExistWhenRequested = "İstenen programlama dili mevcut değil.";
+        public static string TechnologyShouldExistWhenRequested = "İstenen teknoloji mevcut değil.";
+        public static string TechnologyNameCanNotBeDuplicatedWhenInserted = "Bu teknoloji mevcut.";
     }
 }

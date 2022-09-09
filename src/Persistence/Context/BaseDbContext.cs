@@ -31,9 +31,21 @@ namespace Persistence.Context
         {
             modelBuilder.Entity<ProgrammingLanguage>(a =>
             {
-                a.ToTable("ProgrammingLanguages").HasKey(k => k.Id);//pkey
-                a.Property(p => p.Id).HasColumnName("Id");//col
+                a.ToTable("ProgrammingLanguages").HasKey(k => k.Id);
+                a.Property(p => p.Id).HasColumnName("Id");
                 a.Property(p => p.Name).HasColumnName("Name");
+
+                a.HasMany(p => p.Technologies);
+            });
+
+            modelBuilder.Entity<Technology>(a =>
+            {
+                a.ToTable("Technologies").HasKey(k => k.Id);
+                a.Property(p => p.Id).HasColumnName("Id");
+                a.Property(p => p.ProgrammingLanguageId).HasColumnName("ProgrammingLanguageId");
+                a.Property(p => p.Name).HasColumnName("Name");
+
+                a.HasOne(x => x.ProgrammingLanguage);
             });
 
 
@@ -41,7 +53,18 @@ namespace Persistence.Context
             ProgrammingLanguage[] ProgrammingLanguageEntitySeeds = { new(1, "C#"), new(2, "Java"), new(3, "Python") };
             modelBuilder.Entity<ProgrammingLanguage>().HasData(ProgrammingLanguageEntitySeeds);
 
+            Technology[] TechnologiesSeeds =
+            {
+                new(1, 1, "WPF"),
+                new(2, 1, "ASP.NET"),
+                new(3, 2, "Spring"),
+                new(4, 2, "JSP"),
+                new(5, 3, "Bokeh"),
+                new(6, 4, "Vue"),
+                new(7, 4, "React")
+            };
 
+            modelBuilder.Entity<Technology>().HasData(TechnologiesSeeds);
         }
     }
 }
