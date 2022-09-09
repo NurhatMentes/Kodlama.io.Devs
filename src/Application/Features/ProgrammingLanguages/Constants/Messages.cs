@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.Constants
+namespace Application.Features.ProgrammnigLanguages.Constants
 {
     public class Messages
     {
-        public static string ProgrammingLanguageNameCanNotBeDuplicatedWhenInserted = "Bu programlama dili mevcut.";
-        public static string ProgrammingLanguageShouldExistWhenRequested = "İstenen programlama dili mevcut değil.";
-        public static string TechnologyShouldExistWhenRequested = "İstenen teknoloji mevcut değil.";
-        public static string TechnologyNameCanNotBeDuplicatedWhenInserted = "Bu teknoloji mevcut.";
+        public static string NameCanNotBeDuplicatedWhenInserted = "Bu programlama dili mevcut.";
+        public static string ShouldExistWhenRequested = "İstenen programlama dili mevcut değil.";
     }
 }

@@ -1,4 +1,4 @@
-﻿using Application.Features.Constants;
+﻿using Application.Features.ProgrammnigLanguages.Constants;
 using Application.Services.Repositories;
 using Core.CrossCuttingConcerns.Exceptions;
 using Core.Persistence.Paging;
@@ -23,18 +23,18 @@ namespace Application.Features.Rules
         public async Task ProgrammingLanguageNameCanNotBeDuplicatedWhenInserted(string name)
         {
             IPaginate<ProgrammingLanguage> result = await _repository.GetListAsync(p => p.Name == name);
-            if (result.Items.Any()) throw new BusinessException(Messages.ProgrammingLanguageNameCanNotBeDuplicatedWhenInserted);
+            if (result.Items.Any()) throw new BusinessException(Messages.NameCanNotBeDuplicatedWhenInserted);
         }
 
         public async Task ProgrammingLanguageNameCanNotBeDuplicatedWhenUpdated(string name)
         {
             IPaginate<ProgrammingLanguage> result = await _repository.GetListAsync(p => p.Name == name);
-            if (result.Items.Any()) throw new BusinessException(Messages.ProgrammingLanguageNameCanNotBeDuplicatedWhenInserted);
+            if (result.Items.Any()) throw new BusinessException(Messages.NameCanNotBeDuplicatedWhenInserted);
         }
         public async Task ProgrammingLanguageShouldExistWhenRequested(int id)
         {
             ProgrammingLanguage? language = await _repository.GetAsync(p => p.Id == id);
-            if (language == null) throw new BusinessException(Messages.ProgrammingLanguageShouldExistWhenRequested);
+            if (language == null) throw new BusinessException(Messages.ShouldExistWhenRequested);
         }
     }
 }
