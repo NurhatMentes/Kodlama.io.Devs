@@ -1,4 +1,5 @@
-﻿using Core.Security.JWT;
+﻿using Core.Security.Entities;
+using Core.Security.JWT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace Application.Auth.Dtos
 {
-    public class TokenDto
+    public class RefreshedTokenDto
     {
         public AccessToken AccessToken { get; set; }
-        public string Token { get; set; }
-        public DateTime Expiration { get; set; }
+        public RefreshToken RefreshToken { get; set; }
     }
 }

@@ -14,6 +14,8 @@ using Application.Features.Technologies.Rules;
 using Application.Features.Users.Rules;
 using Application.Services.AuthService;
 using Core.Security.JWT;
+using Application.Services.Repositories;
+using Core.Security.Entities;
 
 namespace Application
 {
@@ -29,7 +31,7 @@ namespace Application
             services.AddScoped<AuthBusinessRules>();
             services.AddScoped<UserBusinessRules>();
 
-            services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<IAuthService, AuthManager>();
             services.AddTransient<ITokenHelper, JwtHelper>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());

@@ -12,7 +12,9 @@ namespace Application.Features.Auth.Commands.Register
     {
         public RegisterCommandValidator()
         {
-            RuleFor(u => u.Password).MinimumLength(7);
+            RuleFor(u => u.UserForRegisterDto.Password).MinimumLength(7);
+            RuleFor(u => u.UserForRegisterDto.Email).EmailAddress<RegisterCommand>();
+            RuleFor(u => u.UserForRegisterDto.FirstName).NotNull();
         }
     }
 }

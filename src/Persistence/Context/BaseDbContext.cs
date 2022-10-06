@@ -107,7 +107,7 @@ namespace Persistence.Context
 
 
             //test data
-            ProgrammingLanguage[] ProgrammingLanguageEntitySeeds = { new(1, "C#"), new(2, "Java"), new(3, "Python") };
+            ProgrammingLanguage[] ProgrammingLanguageEntitySeeds = { new(1, "C#"), new(2, "Java"), new(3, "Python"), new(4, "React") };
             modelBuilder.Entity<ProgrammingLanguage>().HasData(ProgrammingLanguageEntitySeeds);
 
             Technology[] TechnologiesSeeds =

@@ -16,12 +16,12 @@ using Domain.Entities;
 
 namespace Application.Features.Auth.Commands.Login
 {
-    public class LoginCommand : IRequest<TokenDto>
+    public class LoginCommand : IRequest<RefreshedTokenDto>
     {
         public string Email { get; set; }
         public string Password { get; set; }
 
-        public class LoginCommandHandler : IRequestHandler<LoginCommand, TokenDto>
+        public class LoginCommandHandler : IRequestHandler<LoginCommand, RefreshedTokenDto>
         {
             private readonly IUserRepository _userRepository;
             private readonly IOperationClaimRepository _operationClaimRepository;
@@ -37,7 +37,7 @@ namespace Application.Features.Auth.Commands.Login
                 _tokenHelper = tokenHelper;
                 _authBusinessRules = authBusinessRules;
             }
-            public async Task<TokenDto> Handle(LoginCommand request, CancellationToken cancellationToken)
+            public async Task<RefreshedTokenDto> Handle(LoginCommand request, CancellationToken cancellationToken)
             {
                 ExtendedUser? user = await _userRepository.GetAsync(u => u.Email == request.Email);
 
@@ -48,7 +48,7 @@ namespace Application.Features.Auth.Commands.Login
 
                 AccessToken accessToken = _tokenHelper.CreateToken(user, roles.Items);
 
-                TokenDto tokenDto = _mapper.Map<TokenDto>(accessToken);
+                RefreshedTokenDto tokenDto = _mapper.Map<RefreshedTokenDto>(accessToken);
 
                 return tokenDto;
             }

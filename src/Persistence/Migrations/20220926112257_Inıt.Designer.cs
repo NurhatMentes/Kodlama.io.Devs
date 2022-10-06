@@ -12,8 +12,8 @@ using Persistence.Context;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    [Migration("20220909125337_Add-Auth")]
-    partial class AddAuth
+    [Migration("20220926112257_Inıt")]
+    partial class Inıt
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,13 +50,13 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2022, 9, 9, 12, 53, 37, 159, DateTimeKind.Utc).AddTicks(8922),
+                            CreationTime = new DateTime(2022, 9, 26, 11, 22, 57, 669, DateTimeKind.Utc).AddTicks(2709),
                             Name = "Admin"
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2022, 9, 9, 12, 53, 37, 159, DateTimeKind.Utc).AddTicks(8923),
+                            CreationTime = new DateTime(2022, 9, 26, 11, 22, 57, 669, DateTimeKind.Utc).AddTicks(2710),
                             Name = "Editor"
                         });
                 });
@@ -230,20 +230,26 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2022, 9, 9, 12, 53, 37, 159, DateTimeKind.Utc).AddTicks(8768),
+                            CreationTime = new DateTime(2022, 9, 26, 11, 22, 57, 669, DateTimeKind.Utc).AddTicks(2570),
                             Name = "C#"
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2022, 9, 9, 12, 53, 37, 159, DateTimeKind.Utc).AddTicks(8770),
+                            CreationTime = new DateTime(2022, 9, 26, 11, 22, 57, 669, DateTimeKind.Utc).AddTicks(2572),
                             Name = "Java"
                         },
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2022, 9, 9, 12, 53, 37, 159, DateTimeKind.Utc).AddTicks(8771),
+                            CreationTime = new DateTime(2022, 9, 26, 11, 22, 57, 669, DateTimeKind.Utc).AddTicks(2573),
                             Name = "Python"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreationTime = new DateTime(2022, 9, 26, 11, 22, 57, 669, DateTimeKind.Utc).AddTicks(2573),
+                            Name = "React"
                         });
                 });
 
@@ -278,49 +284,49 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreationTime = new DateTime(2022, 9, 9, 12, 53, 37, 159, DateTimeKind.Utc).AddTicks(8904),
+                            CreationTime = new DateTime(2022, 9, 26, 11, 22, 57, 669, DateTimeKind.Utc).AddTicks(2686),
                             Name = "WPF",
                             ProgrammingLanguageId = 1
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2022, 9, 9, 12, 53, 37, 159, DateTimeKind.Utc).AddTicks(8905),
+                            CreationTime = new DateTime(2022, 9, 26, 11, 22, 57, 669, DateTimeKind.Utc).AddTicks(2687),
                             Name = "ASP.NET",
                             ProgrammingLanguageId = 1
                         },
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2022, 9, 9, 12, 53, 37, 159, DateTimeKind.Utc).AddTicks(8906),
+                            CreationTime = new DateTime(2022, 9, 26, 11, 22, 57, 669, DateTimeKind.Utc).AddTicks(2688),
                             Name = "Spring",
                             ProgrammingLanguageId = 2
                         },
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2022, 9, 9, 12, 53, 37, 159, DateTimeKind.Utc).AddTicks(8906),
+                            CreationTime = new DateTime(2022, 9, 26, 11, 22, 57, 669, DateTimeKind.Utc).AddTicks(2689),
                             Name = "JSP",
                             ProgrammingLanguageId = 2
                         },
                         new
                         {
                             Id = 5,
-                            CreationTime = new DateTime(2022, 9, 9, 12, 53, 37, 159, DateTimeKind.Utc).AddTicks(8907),
+                            CreationTime = new DateTime(2022, 9, 26, 11, 22, 57, 669, DateTimeKind.Utc).AddTicks(2690),
                             Name = "Bokeh",
                             ProgrammingLanguageId = 3
                         },
                         new
                         {
                             Id = 6,
-                            CreationTime = new DateTime(2022, 9, 9, 12, 53, 37, 159, DateTimeKind.Utc).AddTicks(8907),
+                            CreationTime = new DateTime(2022, 9, 26, 11, 22, 57, 669, DateTimeKind.Utc).AddTicks(2691),
                             Name = "Vue",
                             ProgrammingLanguageId = 4
                         },
                         new
                         {
                             Id = 7,
-                            CreationTime = new DateTime(2022, 9, 9, 12, 53, 37, 159, DateTimeKind.Utc).AddTicks(8908),
+                            CreationTime = new DateTime(2022, 9, 26, 11, 22, 57, 669, DateTimeKind.Utc).AddTicks(2692),
                             Name = "React",
                             ProgrammingLanguageId = 4
                         });
