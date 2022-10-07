@@ -13,44 +13,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
+using Core.CrossCuttingConcerns.Exceptions;
+using Application.Features.Auth.Constants;
 
 namespace Application.Features.Auth.Commands.Login
 {
-    public class LoginCommand : IRequest<RefreshedTokenDto>
+    public class LoginQuery : IRequest<RefreshedTokenDto>
     {
         public string Email { get; set; }
         public string Password { get; set; }
 
-        public class LoginCommandHandler : IRequestHandler<LoginCommand, RefreshedTokenDto>
+        public class LoginCommandHandler : IRequestHandler<LoginQuery, RefreshedTokenDto>
         {
             private readonly IUserRepository _userRepository;
             private readonly IOperationClaimRepository _operationClaimRepository;
-            private readonly IMapper _mapper;
             private readonly ITokenHelper _tokenHelper;
             private readonly AuthBusinessRules _authBusinessRules;
 
-            public LoginCommandHandler(IUserRepository userRepository, IOperationClaimRepository operationClaimRepository, IMapper mapper, ITokenHelper tokenHelper, AuthBusinessRules authBusinessRules)
+            public LoginCommandHandler(IUserRepository userRepository, IOperationClaimRepository operationClaimRepository, ITokenHelper tokenHelper, AuthBusinessRules authBusinessRules)
             {
                 _userRepository = userRepository;
                 _operationClaimRepository = operationClaimRepository;
-                _mapper = mapper;
                 _tokenHelper = tokenHelper;
                 _authBusinessRules = authBusinessRules;
             }
-            public async Task<RefreshedTokenDto> Handle(LoginCommand request, CancellationToken cancellationToken)
+            public async Task<RefreshedTokenDto> Handle(LoginQuery request, CancellationToken cancellationToken)
             {
                 ExtendedUser? user = await _userRepository.GetAsync(u => u.Email == request.Email);
 
                 _authBusinessRules.UserShouldExistWhenRequested(user!);
 
-                var result = HashingHelper.VerifyPasswordHash(request.Password, user!.PasswordHash, user.PasswordSalt);
+                if (!HashingHelper.VerifyPasswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
+                    throw new BusinessException(Messages.WrongInformation);
+
                 var roles = await _operationClaimRepository.GetListAsync(o => o.Id==user.Id);
 
                 AccessToken accessToken = _tokenHelper.CreateToken(user, roles.Items);
 
-                RefreshedTokenDto tokenDto = _mapper.Map<RefreshedTokenDto>(accessToken);
-
-                return tokenDto;
+                return new RefreshedTokenDto { AccessToken = accessToken };
             }
         }
     }

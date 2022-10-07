@@ -10,5 +10,6 @@ namespace Application.Features.Auth.Constants
     {
         public static string MailCanNotBeDuplicatedWhenInserted = "Bu E-Posta mevcut.";
         public static string ShouldExistWhenRequested = "İstenen kullanıcı mevcut değil değil.";
+        public static string WrongInformation = "E-posta veya şifre yanlış lütfen tekrar kontrol edin.";
     }
 }

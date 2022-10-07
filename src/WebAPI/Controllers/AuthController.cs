@@ -33,10 +33,10 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginCommand loginCommand)
+        public async Task<IActionResult> Login([FromQuery] LoginQuery loginQuery)
         {
-            RefreshedTokenDto result = await Mediator.Send(loginCommand);
-            return Created("", result);
+            RefreshedTokenDto result = await Mediator.Send(loginQuery);
+            return Ok(result);
         }
     }
 }

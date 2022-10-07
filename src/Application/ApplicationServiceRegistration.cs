@@ -16,6 +16,7 @@ using Application.Services.AuthService;
 using Core.Security.JWT;
 using Application.Services.Repositories;
 using Core.Security.Entities;
+using Application.Features.Claims.Rules;
 
 namespace Application
 {
@@ -30,6 +31,7 @@ namespace Application
             services.AddScoped<TechnologyBusinessRules>();
             services.AddScoped<AuthBusinessRules>();
             services.AddScoped<UserBusinessRules>();
+            services.AddScoped<OperationClaimBusinessRules>();
 
             services.AddTransient<IAuthService, AuthManager>();
             services.AddTransient<ITokenHelper, JwtHelper>();

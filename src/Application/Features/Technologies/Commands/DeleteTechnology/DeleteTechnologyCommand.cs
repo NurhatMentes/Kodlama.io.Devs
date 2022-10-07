@@ -15,11 +15,11 @@ using MediatR;
 
 namespace Application.Features.Technologies.Commands.DeleteTechnology
 {
-    public class DeleteTechnologyCommand:IRequest<deletedTechnologyDto>
+    public class DeleteTechnologyCommand:IRequest<DeletedTechnologyDto>
     {
         public int Id { get; set; }
 
-        public class DeleteTechnologyCommandHandler : IRequestHandler<DeleteTechnologyCommand, deletedTechnologyDto>
+        public class DeleteTechnologyCommandHandler : IRequestHandler<DeleteTechnologyCommand, DeletedTechnologyDto>
         {
             private readonly ITechnologyRepository _repository;
             private readonly IMapper _mapper;
@@ -32,12 +32,12 @@ namespace Application.Features.Technologies.Commands.DeleteTechnology
                 _businessRules = businessRules;
             }
 
-            public async Task<deletedTechnologyDto> Handle(DeleteTechnologyCommand request, CancellationToken cancellationToken)
+            public async Task<DeletedTechnologyDto> Handle(DeleteTechnologyCommand request, CancellationToken cancellationToken)
             {
                 await _businessRules.TechnologyShouldExistWhenRequested(request.Id);
                 Technology? technology = await _repository.GetAsync(x => x.Id == request.Id);
                 Technology deletedTechnology = await _repository.DeleteAsync(technology);
-                deletedTechnologyDto deletedTechnologyDto = _mapper.Map<deletedTechnologyDto>(deletedTechnology);
+                DeletedTechnologyDto deletedTechnologyDto = _mapper.Map<DeletedTechnologyDto>(deletedTechnology);
                 return deletedTechnologyDto;
             }
         }
