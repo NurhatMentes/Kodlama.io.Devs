@@ -18,6 +18,7 @@ using Application.Services.Repositories;
 using Core.Security.Entities;
 using Application.Features.Claims.Rules;
 using Application.Features.UserOperationClaims.Rules;
+using Core.Application.Pipelines.Authorization;
 
 namespace Application
 {
@@ -34,6 +35,7 @@ namespace Application
             services.AddScoped<UserBusinessRules>();
             services.AddScoped<OperationClaimBusinessRules>();
             services.AddScoped<UserOperationClaimBusinessRules>();
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
 
             services.AddTransient<IAuthService, AuthManager>();
             services.AddTransient<ITokenHelper, JwtHelper>();

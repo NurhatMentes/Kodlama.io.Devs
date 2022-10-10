@@ -4,16 +4,14 @@ using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Core.Application.Pipelines.Authorization;
+
 
 namespace Application.Features.Commands.CreateProgrammingLanguage
 {
-    public class CreateProgrammingLanguagesCommand : IRequest<CreatedProgrammingLanguageDto>
+    public class CreateProgrammingLanguagesCommand : IRequest<CreatedProgrammingLanguageDto>, ISecuredRequest
     {
+        public string[] Roles => new[] { "Admin"};
         public string Name { get; set; }
         public class CreateProgrammingLanguagesCommandHandler : IRequestHandler<CreateProgrammingLanguagesCommand, CreatedProgrammingLanguageDto>
         {
