@@ -10,6 +10,6 @@ namespace Application.Features.UserOperationClaims.Dtos
     {
         public int Id { get; set; }
         public int OperationClaimId { get; set; }
-        public string Name { get; set; }
+        public int UserId { get; set; }
     }
 }

@@ -1,11 +1,13 @@
 ﻿using Application.Features.Technologies.Commands.CreateTechnology;
 using Application.Features.Technologies.Commands.DeleteTechnology;
+using Application.Features.Technologies.Commands.UpdateTechnology;
 using Application.Features.Technologies.Dtos;
 using Application.Features.Technologies.Models;
 using Application.Features.Technologies.Queries;
 using Application.Features.UserOperationClaims.Commands.CreateUserOperationClaim;
 using Application.Features.UserOperationClaims.Commands.DeleteUserOperationClaim;
 using Application.Features.UserOperationClaims.Commands.Queries.GetListUserOperation;
+using Application.Features.UserOperationClaims.Commands.UpdateUserOperationClaim;
 using Application.Features.UserOperationClaims.Dtos;
 using Application.Features.UserOperationClaims.Model;
 using Core.Application.Requests;
@@ -29,6 +31,13 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> Delete([FromRoute] DeleteUserOperationClaimCommand command)
         {
             DeletedUserOperationClaimDto result = await Mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateUserOperationClaimCommand command)
+        {
+            UpdatedUserOperationClaimDto result = await Mediator.Send(command);
             return Ok(result);
         }
 

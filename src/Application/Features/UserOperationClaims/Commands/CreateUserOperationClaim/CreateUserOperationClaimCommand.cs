@@ -33,10 +33,12 @@ namespace Application.Features.UserOperationClaims.Commands.CreateUserOperationC
 
         public async Task<CreatedUserOperationClaimDto> Handle(CreateUserOperationClaimCommand request, CancellationToken cancellationToken)
         {
-            await _rules.ClaimShouldExistWhenRequested(request.UserId);
+            await _rules.ClaimShouldExistWhenRequested(request.OperationClaimId);
             await _rules.ClaimUserCanNotBeDuplicatedWhenInserted(request.UserId);
-            await _rules.UserClaimShouldExistWhenRequested(request.UserId);
-            
+            await _rules.UserShouldExistWhenRequested(request.UserId);
+
+
+
             UserOperationClaim mappedUserOperationClaim = _mapper.Map<UserOperationClaim>(request);
             UserOperationClaim createdUserOperationClaim = await _repository.AddAsync(mappedUserOperationClaim);
             CreatedUserOperationClaimDto createdUserOperationClaimDto = _mapper.Map<CreatedUserOperationClaimDto>(createdUserOperationClaim);
